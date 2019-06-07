@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Box Office Movies</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+  <link rel="icon" type="image/png" href="https://cdn0.iconfinder.com/data/icons/cosmo-multimedia/40/movie_4-512.png">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ url_for('index') }}">Movie Mojo Magic</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ url_for('create_movie') }}">Create Your Own Movie!</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="hero text-center">
+    <h1>Movie Mojo Magic</h1>
+    <p>Upcoming Movie Hit Predictor</p>
+    <a href="/predict" class="btn btn-primary btn-lg">Scrape New Data</a>
+  </div>
+  <div class="container" id="container_center">
+    <hr>
+    <div class= "heading_text">
+    <h4>Upcoming Movies This Month</h4>
+    <h4>Movies in green are predicted to have IMDB ratings greater than 7.5.</h4>
+    </div>
+    <div class="row">
+      {% for item in movies_data %}
+      {% if item.predictions == 1 %}
+      {% set bg_color = "#7fbf76" %}
+      {% else %}
+      {% set bg_color = "#ff4b42" %}
+      {% endif %}
+      <div
+        style="border: .5px solid rgb(223, 224, 221); padding: 10px 10px 10px 10px; background-color: {{ bg_color }} ;"
+        class="col-md-8 col-md-offset-2">
+        <div class="col-md-4"> 
+          <img src={{ item.posters }} alt="Poster Image">
+        </div>
+        <div class="col-md-8">
+          <h3 class="title"> {{ item.movieTitles }} </h3>
+          <div class="row">
+            <div class="col-md-3">
+              <p class="rating"> {{ item.ratings  if item.ratings != "" else 'Unknown' }}</p>
+            </div>
+            <div class="col-md-3">
+              <p class="runtime"> {{ item.runtimes|int }} min </p>
+            </div>
+            <div class="col-md-6">
+              <p class="genre"> {% for genre in item.genres %} | {{ genre }} {% endfor %} | </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <p class="metascore"> {{ item.metascores|int if item.metascores != "" else 'Unknown'}} Metascore </p>
+            </div>
+          </div>
+          <p class="plot"> {{ item.plots }} </p>
+          <p class="director"> Director: {{item.directors }} </p>
+          <p class="actor"> Stars: {% for actor in item.actors %} | {{ actor }} {% endfor %} | </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <br />
+  <footer>
+    <p>© Copyright Movie Mojo Magic 2019</p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+
+</html>

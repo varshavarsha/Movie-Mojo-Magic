@@ -1,0 +1,1 @@
+web: gunicorn Box_Office_App.app:app

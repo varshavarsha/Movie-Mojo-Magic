@@ -1,0 +1,1 @@
+FLASK_APP=Box_Office_App/app.py flask run
