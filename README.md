@@ -31,6 +31,6 @@ I did some final cleaning of the dataset by converting the datatypes of certain 
 
 I then decided to start building an application that would be able to scrape data using splinter and beatiful soup from the site https://www.imdb.com/movies-coming-soon/ and predict using my machine learning model which of the movies will end up with IMDB ratings of at least 7.5. I also added a section where you can create your own movie to see if it will be predicted to have an IMDB rating of at least 7.5. Try it out at the website below!
 
-#https://movie-mojo-magic.herokuapp.com/
+# https://movie-mojo-magic.herokuapp.com/
 
 
