@@ -25,10 +25,12 @@ http://ahmedhosny.github.io/theGreenCanvas/
 
 https://github.com/cjhutto/vaderSentiment
 
-I did some final cleaning of the dataset by converting the datatypes of certain values and made sure that all of the categorical data I wanted to use for machine learning such as genre and movie poster color was flattened. I started out with a plethora of features, however, I ended up much fewer after controlling for multicollinearity and conducting backwards elimination. In my final model, I only used the columns 'Runtime in Min', 'Action', 'Animation', 'Biography', 'Documentary', 'Drama','History', 'Horror', 'Romance', 'Sci-Fi', 'Short','Director Best Picture Gross', 'Black', 'White', 'Gray', 'Red', 'Yellow','Green', 'Cyan', and 'Blue.' I decided to use logistic regression to predict whether a movie will have at least an 8/10 IMDB Rating, and I was able to predict it with around a 98% accuracy.
+I did some final cleaning of the dataset by converting the datatypes of certain values and made sure that all of the categorical data I wanted to use for machine learning such as genre and movie poster color was flattened. I started out with a plethora of features, however, I ended up much fewer after controlling for multicollinearity and conducting backwards elimination. In my final model, I only used the columns 'Runtime in Min', 'Action', 'Animation', 'Biography', 'Documentary', 'Drama','History', 'Horror', 'Romance', 'Sci-Fi', 'Short','Director Best Picture Gross', 'Black', 'White', 'Gray', 'Red', 'Yellow','Green', 'Cyan', and 'Blue.' I decided to use logistic regression to predict whether a movie will have at least an 8/10 IMDB Rating, and I was able to predict it with around a 90% accuracy.
 
 # Application
 
-I then decided to start building an application that would be able to scrape data using splinter and beatiful soup from the site https://www.imdb.com/movies-coming-soon/ and predict using my machine learning model which of the movies will end up with IMDB ratings of at least 8. Although I achieved my inital objective, I still want to develop it  to make it automatically update all of the initial datasets and the corresponsing machine learning model so that it still has a higher chance of predicting highly rated movies over time. I am also currently working on the HTML part of the project and will start utilizing JavaScript as well to make the website more visually appealing and interactive. More to come soon!
+I then decided to start building an application that would be able to scrape data using splinter and beatiful soup from the site https://www.imdb.com/movies-coming-soon/ and predict using my machine learning model which of the movies will end up with IMDB ratings of at least 7.5. I also added a section where you can create your own movie to see if it will be predicted to have an IMDB rating of at least 7.5. Try it out at the website below!
+
+#https://movie-mojo-magic.herokuapp.com/
 
 
