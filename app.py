@@ -18,8 +18,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/movie_app"
 # mongo = PyMongo(app)
-# client = MongoClient(f"mongodb+srv://varsha:{os.environ.get('atlaspw')}@cluster0-0rjut.mongodb.net/test?retryWrites=true&w=majority")
-client = MongoClient("mongodb+srv://varsha:varshapassword@cluster0-0rjut.mongodb.net/test?retryWrites=true&w=majority")
+client = MongoClient(f"mongodb+srv://varsha:{os.environ.get('atlaspw')}@cluster0-0rjut.mongodb.net/test?retryWrites=true&w=majority")
+# client = MongoClient("mongodb+srv://varsha:varshapassword@cluster0-0rjut.mongodb.net/test?retryWrites=true&w=majority")
 db = client.movie_app
 
 loaded_model = pickle.load(open("finalized_model.pkl", "rb"))
